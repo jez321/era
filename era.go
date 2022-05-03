@@ -23,7 +23,8 @@
 //		era.WithCode(EInvalidPassword),
 //	 )
 //
-//	 // In your handler (assuming you return an error to a wrapping error handler than then extracts and returns the message)
+//	 // In your handler (assuming you return an error to a wrapping error handler that then
+//	 // extracts and returns the message)
 //   if err := svc.Login(user, pw); err != nil {
 //	   err = fmt.Errorf("logging in: %w", err)
 //     fldOpt := era.WithFields(era.F{ "user": user })

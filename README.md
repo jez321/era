@@ -1,7 +1,9 @@
 # Era
+
 Simple Go custom errors supporting error codes, friendly messages, and key/value data.
 
 # Usage
+
 ```go
 // Creating an error
 if err := doSomething(x, y); err != nil {
@@ -20,6 +22,7 @@ fields := era.Fields(err) // { "x": x, "y": y }
 
 When an error is wrapped multiple times with era, Code() and Message() will return the outermost code and message,
 so you can overwrite this data further up the call stack where you may have more context.
+
 ```go
 // In your service layer
 return era.Error(
@@ -31,12 +34,16 @@ return era.Error(
 // that then extracts and returns the message)
 if err := svc.Login(user, pw); err != nil {
   err = fmt.Errorf("logging in: %w", err)
-  fldOpt := era.WithFields(era.F{ "user": user })
+  opts := era.Options{era.WithFields(era.F{ "user": user })}
   if era.Code(err) == EInvalidPassword {
-    return era.New(err, era.WithMessage("Invalid login credentials."), fldOpt)
+      opts = append(opts, era.WithMessage("Invalid login credentials."))
   }
-  return era.New(err, era.WithMessage("Internal error."), fldOpt)
+  return era.New(err, opts)
 }
 ```
-Field data from multiple wrapper era errors is combined, with data from outermost errors taking precedence
+
+Field data from multiple wrapper era errors is combined, with values from outermost errors taking precedence
 if the same key exists more than once.
+
+Note that codes, messages, and field data isn't included in the output of `Error()`.
+If you'd like to print them out you can retrieve the values from `Code()`, `Message()`, and `Fields()`.

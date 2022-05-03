@@ -30,11 +30,11 @@
 //		// extracts and returns the message)
 //		if err := svc.Login(user, pw); err != nil {
 //			err = fmt.Errorf("logging in: %w", err)
-//			fldOpt := era.WithFields(era.F{ "user": user })
+//			opts := era.Options{era.WithFields(era.F{ "user": user })}
 //			if era.Code(err) == EInvalidPassword {
-//				return era.New(err, era.WithMessage("Invalid login credentials."), fldOpt)
+//				opts = append(opts, era.WithMessage("Invalid login credentials."))
 //			}
-//			return era.New(err, era.WithMessage("Internal error."), fldOpt)
+//			return era.New(err, opts)
 //		}
 //
 // Field data from multiple wrapper era errors is combined, with data from outermost errors taking precedence

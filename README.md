@@ -20,7 +20,7 @@ msg := era.Message(err) // "An internal error occured."
 fields := era.Fields(err) // { "x": x, "y": y }
 ```
 
-When an error is wrapped multiple times with era, Code() and Message() will return the outermost code and message,
+When an error is wrapped multiple times with era, `Code()` and `Message()` will return the outermost code and message,
 so you can overwrite this data further up the call stack where you may have more context.
 
 ```go

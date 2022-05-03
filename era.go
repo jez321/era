@@ -1,5 +1,6 @@
 // Package era provides a simple custom error supporting addition of an error code, friendly error message,
 // and additional key/value data.
+//
 // Usage:
 //    // Creating an error
 //    if err := doSomething(x, y); err != nil {

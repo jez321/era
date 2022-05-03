@@ -6,7 +6,7 @@
 //	  	return era.New(fmt.Errorf("doing something: %w", err),
 //			era.WithCode(EInternalError),
 //			era.WithMessage("An internal error occured."),
-//			era.WithFields(era.F{ "x": x, "y", y }),
+//			era.WithFields(era.F{ "x": x, "y": y }),
 //		)
 //    }
 //

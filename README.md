@@ -1,6 +1,8 @@
 # Era
 
 Simple Go custom errors supporting error codes, friendly messages, and key/value data.
+There really isn't very much to this package so you may want to consider just copy/pasting the code
+and using it as a base for your own customizations rather than adding it as a dependency.
 
 # Usage
 
